@@ -1,42 +1,61 @@
-// JavaScript do Projeto EcoSync
+document.addEventListener('DOMContentLoaded', function () {
+  // Inicializa Choices para todos os selects com a classe .choices
+  const stateSelect = new Choices('#state', {
+    searchEnabled: true,
+    placeholder: false,
+    placeholderValue: '', 
+    itemSelectText: '',   
+  });
 
-const stateSelect = document.getElementById("state");
-const citySelect = document.getElementById("city");
+  const citySelect = new Choices('#city', {
+    searchEnabled: true,
+    placeholder: false,
+    placeholderValue: '',
+    itemSelectText: '',
+  });
 
-fetch('../assets/js/states-cities.json')
-    .then(response => response.json())
+  const countSelect = new Choices('#count__day', {
+  placeholder: true,
+  itemSelectText: '',
+});
+
+// Cria opções de 1 a 7
+const countOptions = Array.from({ length: 7 }, (_, i) => ({
+  value: `${i + 1}`,
+  label: `${i + 1}`,
+}));
+
+countSelect.setChoices(countOptions, 'value', 'label', false);
+
+
+  // Carregar estados e cidades
+  fetch('../assets/js/states-cities.json')
+    .then(res => res.json())
     .then(data => {
-        // Ordena os estados por nome (A-Z)
-        const sortedStates = data.states.sort((a, b) =>
-            a.name.localeCompare(b.name)
-        );
+        const states = data.states.sort((a, b) => a.name.localeCompare(b.name));
+        states.forEach(state => {
+        stateSelect.setChoices(
+            [{ value: state.code, label: state.name, selected: false, disabled: false }],
+            'value',
+            'label',
+            false
+    );
+    });
 
-        // Preenche o select de estados
-        sortedStates.forEach(state => {
-            const option = document.createElement("option");
-            option.value = state.code;
-            option.textContent = state.name;
-            stateSelect.appendChild(option);
-        });
+    document.getElementById('state').addEventListener('change', function (e) {
+        const selectedStateCode = e.target.value;
+        const selectedState = data.states.find(s => s.code === selectedStateCode);
 
-    // Quando o estado muda, atualiza as cidades
-    stateSelect.addEventListener("change", () => {
-        const selectedState = stateSelect.value;
-        citySelect.innerHTML = '<option value="">Selecione a Cidade</option>';
+        if (selectedState) {
+            citySelect.clearChoices();
 
-        const stateData = data.states.find(state => state.code === selectedState);
-        if (stateData) {
-            // Também ordena as cidades por nome
-            const sortedCities = stateData.topCities.sort((a, b) => a.localeCompare(b));
-            sortedCities.forEach(city => {
-                const option = document.createElement("option");
-                option.value = city;
-                option.textContent = city;
-                citySelect.appendChild(option);
-            });
+            // Adiciona "Selecione a Cidade" como a primeira opção
+            citySelect.setChoices([
+            { value: '', label: 'Selecione a Cidade', selected: true, disabled: false },
+            ...selectedState.topCities.map(city => ({ value: city, label: city }))
+            ], 'value', 'label', false);
         }
     });
-})
-.catch(error => {
-    console.error("Erro ao carregar o JSON:", error);
+    })
+    .catch(err => console.error('Erro ao carregar estados:', err));
 });

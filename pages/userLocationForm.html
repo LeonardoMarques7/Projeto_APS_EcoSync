@@ -5,7 +5,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Bem-vindo | EcoSync</title>
     <!-- Arquivo de Estilização -->
-    <link rel="stylesheet" href="../../assets/css/style.css">
     <!-- Fontes -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
@@ -13,42 +12,54 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
         integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
         crossorigin="anonymous" referrerpolicy="no-referrer" />
+        <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/choices.js/public/assets/styles/choices.min.css" />
+        <script src="https://cdn.jsdelivr.net/npm/choices.js/public/assets/scripts/choices.min.js"></script>
+    <link rel="stylesheet" href="../../assets/css/style.css">
+    <script src="../assets/js/script.js" defer></script>
 </head>
 <body class="body__container">
     <main class="user-location__container">
         <span class="container__actions">
+            <img src="../assets/images/icon__ia.png" class="icon-ia__form"/>
+            <h2 class="title__action">Igloo Company</h2>
             <form action="POST" class="user-location__form">
                 <span class="group__input">
                     <h4>Qual estado você mora?</h4>
-                    <select id="state" class="select__item">
-                        <option value="">Selecione o Estado</option>
+                    <select id="state" class="select__item choices">
+                        <option value="" selected disabled>Selecione o Estado</option>
                     </select>
                 </span>
+            
                 <span class="group__input">
                     <label for="city">Qual cidade você mora?</label>
-                    <select id="city"  class="select__item">
-                        <option value="">Selecione a Cidade</option>
+                    <select id="city" class="select__item choices">
+                        <option value="" selected disabled>Selecione a Cidade</option>
                     </select>
                 </span>
+            
                 <span class="group__input">
-                    <label for="count__day">Quantas atividades deseja fazer por dia?</label>
-                    <select name="count__day" id="count__day" class="select__item">
-                        <option value="1">1</option>
-                        <option value="2">2</option>
-                        <option value="3">3</option>
-                        <option value="4">4</option>
-                        <option value="5">5</option>
-                        <option value="6">6</option>
-                        <option value="7">7</option>
-                    </select>
+                    <label>Quantas atividades deseja fazer por dia?</label>
+                    <span class="input__count-day">
+                        <select name="count__day" id="count__day">
+                            <option value="" disabled selected>0</option>
+                        </select>
+                    </span>
                 </span>
                 <button type="submit" class="user-location__button">Continuar</button>
             </form>
         </span>
-        <div class="container__badges">
-            <span class="badge__item"><p class="badge___text">Antes de iniciar, precisamos de algumas informações.</p></span>
-            <span class="badge__item"><p class="badge___text">Antes de iniciar, precisamos de algumas informações.</p></span>
-        </div>
+        <span class="message__welcome">
+            <h1 class="title__welcome">Bem-vindo ao EcoSync</h1>
+            <div class="container__badges">
+                <span class="badge__item">
+                    <p class="badge___text">Antes de iniciar, precisamos de algumas informações.</p>
+                </span>
+                <span class="badge__item">
+                    <p class="badge___text">Graças a EcoAI, conseguimos saber a situação ambiental da sua região.</p>
+                </span>
+            </div>
+        </span>
+        
         <img src="../assets/images/folha.png" class="image__userForm-1">
         <img src="../assets/images/folha.png" class="image__userForm-2">
         <img src="../assets/images/folha.png" class="image__userForm-3">
@@ -59,7 +70,6 @@
         <img src="../assets/images/folha.png" class="image__userForm-8">
     </main>
     <!-- Arquivo de JavaScript -->
-     <script src="../assets/js/script.js" defer></script>
 </body>
 
 </html>
