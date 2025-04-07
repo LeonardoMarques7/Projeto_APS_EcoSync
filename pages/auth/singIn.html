@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Login | EcoSync</title>
+    <!-- Arquivo de Estilização -->
+    <link rel="stylesheet" href="../../assets/css/style.css">
+    <!-- Fontes -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Kadwa:wght@400;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.7.2/css/all.min.css"
+        integrity="sha512-Evv84Mr4kqVGRNSgIGL/F/aIDqQb7xQ2vcrdIwxfjThSH8CSR7PBEakCr51Ck+w+/U6swU2Im1vVX0SVk9ABhg=="
+        crossorigin="anonymous" referrerpolicy="no-referrer" />
+</head>
+<body class="body__container">
+    <main class="singIn__container">
+        <span class="container__actions">
+            <h1 class="singIn__title">Login</h1>
+            <form action="POST" class="singIn__form">
+                <span class="label__input">
+                    <h4>Email</h4>
+                    <input type="email" class="form__input" name="email" id="email">
+                </span>
+                <span class="label__input">
+                    <h4>Senha</h4>
+                    <input type="password" class="form__input" name="password" id="password">
+                </span>
+                <button type="submit" class="singIn__button">Entrar</button>
+            </form>
+            <div class="singIn__actions">
+                <a href="#" class="google__link"><i class="fa-brands fa-google"></i> Login com Google</a>
+                <a href="#" class="facebook__link"><i class="fa-brands fa-facebook-f"></i> Login com Facebook</a>
+            </div>
+            <a href="./singUp.html" class="singIn__link">Criar Conta</a>
+        </span>
+        <img src="../../assets/images/folha.png" class="image__singIn--top" alt="Folha">
+        <img src="../../assets/images/folha.png" class="image__singIn--left" alt="Folha">
+        <img src="../../assets/images/folha.png" class="image__singIn--bottom" alt="Folha">
+        <img class="image__singIn" src="../../assets/images/ramo_folha.png" />
+    </main>
+    <!-- Arquivo de JavaScript -->
+    <script src="./assets/js/script.js" defer></script>
+</body>
+</html>
